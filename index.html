@@ -363,6 +363,108 @@
   }
   .foot .small{margin-top:10px;color:var(--ink-mute);font-size:12px}
 
+  /* ================================ Print button ================================ */
+  .print-row{display:flex;justify-content:center;margin-top:20px}
+  .print-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:13px 30px;border-radius:999px;
+    background:linear-gradient(135deg,#d4ad2c,#a8841d);
+    color:#1b1404;font-weight:800;font-size:15px;
+    box-shadow:0 10px 28px rgba(201,162,39,.30),inset 0 1px 0 rgba(255,255,255,.4);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .print-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(201,162,39,.45),inset 0 1px 0 rgba(255,255,255,.4)}
+  .print-btn svg{width:19px;height:19px}
+  .print-btn .hint{font-size:11px;font-weight:700;opacity:.7}
+
+  /* ================================ Print sheet (hidden on screen) ================================ */
+  #printSheet{display:none;font-family:'Cairo','Segoe UI',Tahoma,Arial,sans-serif;color:#241f15;background:#fff}
+  .pr-page{max-width:194mm;margin:0 auto}
+
+  .pr-head{
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:10px 18px;border-radius:14px;
+    background:linear-gradient(135deg,#0e6b4f 0%,#0a5a42 50%,#07452f 100%);
+    border:2px solid #c9a227;
+  }
+  .pr-head::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(420px 220px at 85% -30%,rgba(246,231,179,.28),transparent 70%),
+      repeating-linear-gradient(45deg,rgba(255,255,255,.045) 0 10px,transparent 10px 20px);
+  }
+  .pr-head-right{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+  .pr-crest{
+    width:56px;height:56px;border-radius:50%;flex:0 0 auto;
+    border:2px solid #e8d48b;display:grid;place-items:center;
+    background:radial-gradient(circle at 50% 30%,rgba(246,231,179,.35),rgba(201,162,39,.08) 70%);
+    color:#f6e7b3;
+  }
+  .pr-crest svg{width:30px;height:30px}
+  .pr-eyebrow{font-size:10px;letter-spacing:.25em;color:#e8d48b;font-weight:700}
+  .pr-title{font-family:'Reem Kufi','Amiri',serif;font-size:25px;font-weight:700;color:#fff;line-height:1.25}
+  .pr-sub{font-family:'Amiri',serif;font-size:12px;color:#cfe8dc}
+  .pr-badge{
+    position:relative;z-index:1;text-align:center;flex:0 0 auto;
+    background:linear-gradient(135deg,#f6e7b3,#d4ad2c);
+    border-radius:12px;padding:9px 20px;color:#3a2c05;
+    border:1px solid rgba(255,255,255,.55);
+  }
+  .pr-badge .m{font-family:'Reem Kufi','Amiri',serif;font-size:19px;font-weight:700;line-height:1.15}
+  .pr-badge .y{font-size:12px;font-weight:700;opacity:.8}
+
+  .pr-strip{display:flex;justify-content:center;gap:10px;margin-top:6px}
+  .pr-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:3px 15px;border-radius:999px;font-size:11.5px;font-weight:700;
+    background:#f4efe1;color:#6b5a1e;border:1px solid #d8c98f;
+  }
+  .pr-pill.city{background:#0e6b4f;color:#fff;border-color:#0a5a42;font-size:13px}
+
+  .pr-table-wrap{margin-top:6px;border:2px solid #0e6b4f;border-radius:12px;overflow:hidden}
+  table.pr-table{width:100%;border-collapse:collapse;text-align:center;font-size:10.5px}
+  .pr-table thead th{color:#fff;font-weight:800;font-size:11px;padding:5px 4px;white-space:nowrap}
+  .pr-table th.c-day,.pr-table th.c-wd{background:#0e6b4f}
+  .pr-table th.c-fajr{background:#5a4a9f}
+  .pr-table th.c-sunrise{background:#d97b16}
+  .pr-table th.c-dhuhr{background:#b8860b}
+  .pr-table th.c-maghrib{background:#bf4e30}
+  .pr-table th.c-midnight{background:#2c4770}
+
+  .pr-table td{padding:1.6px 4px;border-bottom:1px solid #eee6d2;direction:ltr;font-variant-numeric:tabular-nums;color:#312a1c}
+  .pr-table td.c-day{direction:rtl;font-weight:800;background:#eef5f1;color:#0e6b4f}
+  .pr-table td.c-wd{direction:rtl;font-weight:600;background:#f6faf8;color:#3c5c4e}
+  .pr-table td.c-fajr{background:rgba(90,74,159,.07)}
+  .pr-table td.c-sunrise{background:rgba(217,123,22,.07)}
+  .pr-table td.c-dhuhr{background:rgba(184,134,11,.08)}
+  .pr-table td.c-maghrib{background:rgba(191,78,48,.07)}
+  .pr-table td.c-midnight{background:rgba(44,71,112,.07)}
+  .pr-table td .t{font-weight:700;font-size:11px}
+  .pr-table td .mer{font-size:7.5px;font-weight:800;letter-spacing:.08em;margin-left:3px;opacity:.55}
+
+  .pr-table tr.pr-fri td{background:#dff0e6;border-top:1px solid #bcd9c8;border-bottom:1px solid #bcd9c8}
+  .pr-table tr.pr-fri td.c-wd,.pr-table tr.pr-fri td.c-day{background:#cfe8da;color:#0a5a42;font-weight:800}
+  .pr-table tr.pr-today td{background:#f9ecc0;border-top:1.5px solid #c9a227;border-bottom:1.5px solid #c9a227;font-weight:800}
+  .pr-table tr.pr-today td.c-day,.pr-table tr.pr-today td.c-wd{background:#f3df9e;color:#8a6d10}
+
+  .pr-note{
+    margin-top:6px;padding:5px 14px;border-radius:10px;font-size:10.5px;line-height:1.8;
+    background:#fdf6e3;border:1px solid #e2cf8e;border-inline-start:4px solid #c9a227;color:#5d4e22;
+  }
+  .pr-note strong{color:#8a6d10}
+
+  .pr-foot{margin-top:7px;padding-top:6px;border-top:1.5px solid #c9a227;display:flex;justify-content:center;align-items:center}
+  .pr-meta{font-size:9.5px;color:#8c8266;text-align:center;line-height:1.7}
+
+  @media print{
+    @page{size:A4 portrait;margin:8mm}
+    html,body{height:auto!important;background:#fff!important}
+    body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .stage{display:none!important}
+    #printSheet{display:block}
+  }
+
   /* ================================ Responsive ================================ */
   @media (max-width:880px){
     .now-card{grid-template-columns:1fr}
@@ -482,6 +584,13 @@
       <div class="note">
         <strong>ملاحظة:</strong> يُستحسَن الاحتياطُ في وقت صلاة الفجر ربعَ ساعة، في الصلاة والمبيت في مِنى وغيرها من المناسك المتعلِّقة بوقت صلاة الفجر.
       </div>
+      <div class="print-row">
+        <button class="print-btn" id="printBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          <span>طباعة الجدول</span>
+          <span class="hint">PDF أو طابعة</span>
+        </button>
+      </div>
     </section>
 
   </main>
@@ -499,6 +608,9 @@
   </footer>
 
 </div>
+
+<!-- ===================== PRINT SHEET (built on demand, print only) ===================== -->
+<div id="printSheet" aria-hidden="true"></div>
 
 <script>
 /* ===================== Embedded prayer data ===================== */
@@ -646,6 +758,91 @@ function renderTable(){
       </tr>
     `;
   }).join('');
+  buildPrintSheet();
+}
+
+/* ===================== Print sheet ===================== */
+function buildPrintSheet(){
+  const city = state.city;
+  const m = state.viewMonth;
+  const year = state.today.getFullYear();
+  const rows = PRAYER_DATA?.[city]?.[String(m)] || [];
+  const cityName = city==='mecca' ? 'مكة المكرمة' : 'المدينة المنورة';
+  const now = new Date();
+  const isCurrentMonth = (now.getMonth()+1)===m;
+
+  const bodyRows = rows.map(r=>{
+    const wd = new Date(year, m-1, r.day).getDay();
+    const isFri = wd===5;
+    const isToday = isCurrentMonth && r.day===now.getDate();
+    const cells = PRAYERS.map(p=>{
+      const f = format12(r[p.key], p.key);
+      return `<td class="c-${p.key}"><span class="t">${f.time}</span><span class="mer">${f.mer}</span></td>`;
+    }).join('');
+    return `<tr class="${isFri?'pr-fri':''}${isToday?' pr-today':''}">
+      <td class="c-day">${arNum(r.day)}</td>
+      <td class="c-wd">${WEEKDAYS_AR[wd]}</td>
+      ${cells}
+    </tr>`;
+  }).join('');
+
+  $('#printSheet').innerHTML = `
+    <div class="pr-page">
+      <header class="pr-head">
+        <div class="pr-head-right">
+          <div class="pr-crest">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 6 L40 14 L32 22 L24 14 Z"/><path d="M14 26 h36 v6 H14 z"/><path d="M16 32 v22 h32 V32"/>
+              <path d="M28 54 v-10 a4 4 0 0 1 8 0 v10"/><path d="M22 38 h6 M36 38 h6 M22 46 h6 M36 46 h6"/>
+              <circle cx="32" cy="36" r="1.4" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <div>
+            <div class="pr-eyebrow">الحرمان الشريفان</div>
+            <div class="pr-title">مَوَاقِيتُ الصَّلَاة</div>
+            <div class="pr-sub">جدول شهري لأوقات الصلاة — ${cityName}</div>
+          </div>
+        </div>
+        <div class="pr-badge">
+          <div class="m">${MONTHS_AR[m-1]}</div>
+          <div class="y">${arNum(year)}م</div>
+        </div>
+      </header>
+
+      <div class="pr-strip">
+        <span class="pr-pill city">${cityName}</span>
+        <span class="pr-pill">${arNum(rows.length)} يومًا</span>
+        <span class="pr-pill">التوقيت المحلي</span>
+      </div>
+
+      <div class="pr-table-wrap">
+        <table class="pr-table">
+          <thead>
+            <tr>
+              <th class="c-day">اليوم</th>
+              <th class="c-wd">الأسبوع</th>
+              <th class="c-fajr">الفجر</th>
+              <th class="c-sunrise">الشروق</th>
+              <th class="c-dhuhr">الظهر</th>
+              <th class="c-maghrib">المغرب</th>
+              <th class="c-midnight">منتصف الليل</th>
+            </tr>
+          </thead>
+          <tbody>${bodyRows}</tbody>
+        </table>
+      </div>
+
+      <div class="pr-note">
+        <strong>ملاحظة:</strong> يُستحسَن الاحتياطُ في وقت صلاة الفجر ربعَ ساعة، في الصلاة والمبيت في مِنى وغيرها من المناسك المتعلِّقة بوقت صلاة الفجر.
+      </div>
+
+      <footer class="pr-foot">
+        <div class="pr-meta">
+          طُبع بتاريخ: ${WEEKDAYS_AR[now.getDay()]}، ${arNum(now.getDate())} ${MONTHS_AR[now.getMonth()]} ${arNum(now.getFullYear())}م
+        </div>
+      </footer>
+    </div>
+  `;
 }
 
 /* ===================== Live clock + countdown ===================== */
@@ -699,6 +896,13 @@ function init(){
   $('#nextMonth').addEventListener('click',()=>{
     state.viewMonth = state.viewMonth===12?1:state.viewMonth+1; renderTable();
   });
+
+  $('#printBtn').addEventListener('click',()=>{
+    buildPrintSheet();
+    window.print();
+  });
+  // يغطي أيضًا Ctrl+P — يجهّز نسخة الطباعة قبل فتح نافذة الطباعة
+  window.addEventListener('beforeprint', buildPrintSheet);
 
   renderToday();
   renderTable();
